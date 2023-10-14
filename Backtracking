@@ -1,0 +1,13 @@
+def numDecodingsBacktrack(s: str) -> int:
+def backtrack(start: int, end: int) -> int:
+if start == end:
+return 1
+if s[start] == '0':
+return 0
+if start == end - 1:
+return 1
+count = backtrack(start+1, end)
+if int(s[start:start+2]) <= 26:
+count += backtrack(start+2, end)
+return count
+return backtrack(0, len(s))
